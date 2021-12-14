@@ -1,13 +1,14 @@
 <ol class="post-list">
-  {{#each posts as |post|}}
+  {{#each posts}}
   <li>
     <article class="post">
       <div class="title">
-        <a href="{{post.post_url}}" target="_blank">{{post.title}}</a>
-        <span>({{post.post_url}})</span>
+        <a href="/post/{{id}}">{{title}}</a>
+       
       </div>
       <div class="meta">
-        <a href="/post/{{post.id}}">{{post.comments.length}} comment(s)</a>
+        
+        <p>{{comments.length}} comment(s)</p>
       </div>
     </article>
   </li>
