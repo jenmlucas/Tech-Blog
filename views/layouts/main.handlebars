@@ -9,27 +9,32 @@
 
   <body>
     <header>
+      <h1 class="text-center">
+        <p>Tech Blog<p>
+      </h1> 
       <nav class="nav justify-content-center nav-pills">
         <div class="nav-item">
-        <a href="/home">Home</a>
-        <a href="/">dashboard</a>
+          {{#if loggedIn}}
+        <a href="/dashboard">dashboard</a>
         <button>Logout</button>
+        {{else}}
         <a href="/login">Login</a>
+        {{/if}}
         </div>
       </nav>
-      <h1>
-        <p>Tech Blog<p>
-      </h1>
     </header>
-    <main>
+    <main class="text-center">
       {{{body}}}
     </main>
 
     <footer>
-      <p>
+      <p class="text-center">
         Copyright &copy; 2018-<script>document.write(new Date().getFullYear())</script>
         JenMLucas. All Rights Reserved</p>
     </footer>
 
+{{#if loggedIn}}
+    <script src="/javascript/logout.js"></script>
+  {{/if}}
   </body>
 </html>

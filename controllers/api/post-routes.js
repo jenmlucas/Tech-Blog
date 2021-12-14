@@ -1,10 +1,17 @@
 const router = require("express").Router();
 const { Post, User, Comment } = require("../../models");
+const withAuth = require('../../utils/auth');
 
 // get all users
 router.get("/", (req, res) => {
   Post.findAll({
     order: [["created_at", "DESC"]],
+    attributes: [
+      'id',
+      'post_text',
+      'title',
+      'created_at',
+  ],
     include: [
       {
         model: Comment,
@@ -29,6 +36,12 @@ router.get("/:id", (req, res) => {
     where: {
       id: req.params.id,
     },
+    attributes: [
+      'id',
+      'post_text',
+      'title',
+      'created_at',
+  ],
     include: [
       {
         model: Comment,
@@ -54,7 +67,7 @@ router.get("/:id", (req, res) => {
     .catch((err) => res.json(err));
 });
 
-router.post("/", (req, res) => {
+router.post("/", withAuth, (req, res) => {
   Post.create({
     title: req.body.title,
     post_text: req.body.post_text,
@@ -64,11 +77,10 @@ router.post("/", (req, res) => {
     .catch((err) => res.json(err));
 });
 
-router.put("/:id", (req, res) => {
+router.put("/:id", withAuth, (req, res) => {
   Post.update(
     {
       title: req.body.title,
-      post_text: req.body.post_text
     },
     {
       where: {
@@ -86,7 +98,7 @@ router.put("/:id", (req, res) => {
     .catch((err) => res.json(err));
 });
 
-router.delete("/:id", (req, res) => {
+router.delete("/:id", withAuth, (req, res) => {
   Post.destroy({
     where: {
       id: req.params.id,
