@@ -10,7 +10,7 @@
   <body>
     <header>
       <nav class="nav justify-content-center nav-pills bg-primary">
-        <div class="nav-item">
+        <span class="nav-item">
         {{#if loggedIn}}
         <a href="/" class="text-dark">Homepage</a>
         <a href="/dashboard" class="text-dark">Dashboard</a>
@@ -18,7 +18,7 @@
         {{else}}
         <a href="/login" class="text-dark">Login</a>
         {{/if}}
-        </div>
+        </span>
       </nav>
       <div class="container-fluid bg-primary">
       <h1 class="text-center">Tech Blog</h1> 
