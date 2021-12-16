@@ -9,21 +9,24 @@
 
   <body>
     <header>
-      <h1 class="text-center">
-        <p>Tech Blog<p>
-      </h1> 
-      <nav class="nav justify-content-center nav-pills">
+      <nav class="nav justify-content-center nav-pills bg-primary">
         <div class="nav-item">
         {{#if loggedIn}}
-        <a href="/dashboard">dashboard</a>
-        <button>Logout</button>
+        <a href="/" class="text-dark">Homepage</a>
+        <a href="/dashboard" class="text-dark">Dashboard</a>
+        <button id="logout" class="text-dark border-0 btn btn-link">Logout</button>
         {{else}}
-        <a href="/login">Login</a>
+        <a href="/login" class="text-dark">Login</a>
         {{/if}}
         </div>
       </nav>
+      <div class="container-fluid bg-primary">
+      <h1 class="text-center">
+        <p>Tech Blog<p>
+      </h1> 
+      </div>
     </header>
-    
+
     <main class="text-center">
       {{{body}}}
     </main>
