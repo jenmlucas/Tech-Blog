@@ -28,4 +28,8 @@ async function commentFormHandler(event) {
     }
   }
   
-  document.querySelector('.comment-form').addEventListener('submit', commentFormHandler);
+  const commentButton = document.querySelectorAll('.comment-form')
+  commentButton.forEach(button => {
+    button.addEventListener("click", commentFormHandler);
+  })
+  
